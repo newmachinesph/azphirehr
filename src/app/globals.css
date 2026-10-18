@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0F62FE;
+  --color-primary-dark: #0043CE;
+  --color-secondary: #7C3AED;
+  --color-accent: #06B6D4;
+  --color-dark: #0A0F1E;
+  --color-dark-lighter: #111827;
+  --color-light: #F8FAFC;
+  --color-warm: #FFF7ED;
+  --color-text: #1E293B;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-light);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    #4F6AFF 25%,
+    var(--color-secondary) 55%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--color-primary),
+    #4338CA,
+    var(--color-secondary),
+    var(--color-accent),
+    var(--color-primary)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 10s ease infinite;
+}
+
+/* Focus-visible styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Dark section depth pattern */
+.dark-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dark section radial glow */
+.dark-radial-glow {
+  position: relative;
+}
+.dark-radial-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(15,98,254,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Glow effect */
+.glow-blue {
+  box-shadow: 0 0 40px rgba(15, 98, 254, 0.15);
+}
+
+.glow-violet {
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
+}
+
+/* Logo ticker infinite scroll */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
